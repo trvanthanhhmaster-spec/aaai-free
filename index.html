@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" style="background:#0a0a0a;color:#eaeaea">
+<html lang="vi" style="background:#0a0a0a;color:#eaeaea">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>[ aaAI-Free ] Unlock aaPanel AI Assistant</title>
+<title>[ aaAI-Free ] Mở khóa aaPanel AI Assistant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -25,7 +25,6 @@
   .mono  { font-family:'IBM Plex Mono',monospace }
   .red   { color:#e61919 }
   .bg-red{ background:#e61919 }
-  .b-red { border-color:#e61919 }
   .terminal-green { color:#4af626 }
   .grid-marker {
     background-image:
@@ -41,75 +40,102 @@
     background:repeating-linear-gradient(0deg, transparent, transparent 2px, rgb(0 0 0 / .03) 2px, rgb(0 0 0 / .03) 4px);
   }
   @media (prefers-reduced-motion: reduce) { .scanline { display:none } }
+  /* Language toggle */
+  .lang-vi .en { display:none }
+  .lang-en .vi { display:none }
+  .lang-switch { cursor:pointer; transition:color .15s; font-family:'IBM Plex Mono',monospace }
 </style>
+<script>
+  function toggleLang() {
+    const html = document.documentElement;
+    const btn = document.getElementById('lang-btn');
+    if (html.classList.contains('lang-vi')) {
+      html.classList.remove('lang-vi'); html.classList.add('lang-en');
+      btn.textContent = '[ TIẾNG VIỆT ]';
+    } else {
+      html.classList.remove('lang-en'); html.classList.add('lang-vi');
+      btn.textContent = '[ ENGLISH ]';
+    }
+  }
+</script>
 </head>
-<body class="mono">
+<body class="mono lang-vi">
 
 <div class="scanline"></div>
 
-<!-- ====== NAV: telemetry strip ====== -->
+<!-- ====== NAV ====== -->
 <nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:#0a0a0a;border-bottom:1px solid rgb(255 255 255 / .08);height:56px">
   <div style="max-width:1400px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:12px">
-      <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#e61919">[ aaAI-Free ]</span>
+      <span class="red" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase">[ aaAI-Free ]</span>
       <span style="font-size:10px;color:rgb(255 255 255 / .2)">REV 1.0</span>
     </div>
     <div style="display:flex;align-items:center;gap:24px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgb(255 255 255 / .35)">
-      <a href="#how" style="color:inherit;text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">/// OPERATION</a>
-      <a href="#install" style="color:inherit;text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">/// DEPLOY</a>
+      <span id="lang-btn" class="lang-switch" onclick="toggleLang()" style="color:#e61919;font-weight:600">[ ENGLISH ]</span>
+      <a href="#how" style="color:inherit;text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">
+        <span class="vi">/// CƠ CHẾ</span><span class="en">/// OPERATION</span>
+      </a>
+      <a href="#install" style="color:inherit;text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">
+        <span class="vi">/// CÀI ĐẶT</span><span class="en">/// DEPLOY</span>
+      </a>
       <a href="https://github.com/trvanthanhhmaster-spec/aaai-free" style="color:#e61919;text-decoration:none;font-weight:600">[ SOURCE ]</a>
     </div>
   </div>
 </nav>
 
-<!-- ====== HERO: macro-type + asymmetric negative space ====== -->
+<!-- ====== HERO ====== -->
 <section style="position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;padding-top:56px">
   <div class="grid-marker" style="position:absolute;inset:0;opacity:.5"></div>
 
-  <!-- Crosshair markers at grid intersections -->
   <span style="position:absolute;top:120px;left:80px;font-size:20px;color:rgb(255 255 255 / .08)">+</span>
   <span style="position:absolute;bottom:120px;right:80px;font-size:20px;color:rgb(255 255 255 / .08)">+</span>
 
   <div style="position:relative;max-width:1400px;margin:0 auto;padding:60px 24px;width:100%">
     <div style="display:grid;grid-template-columns:1fr;gap:40px;align-items:center">
 
-      <!-- Eyebrow: technical unit marker -->
+      <!-- Eyebrow -->
       <div style="display:flex;align-items:center;gap:16px">
         <span class="red" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">UNIT / AICS-PATCH</span>
         <span style="flex:1;height:1px;background:rgb(255 255 255 / .1)"></span>
-        <span style="font-size:9px;color:rgb(255 255 255 / .15);letter-spacing:.08em">OPEN SOURCE</span>
+        <span class="vi" style="font-size:9px;color:rgb(255 255 255 / .15);letter-spacing:.08em">MÃ NGUỒN MỞ</span>
+        <span class="en" style="font-size:9px;color:rgb(255 255 255 / .15);letter-spacing:.08em">OPEN SOURCE</span>
       </div>
 
-      <!-- Macro headline: viewport-bleeding scale -->
+      <!-- Macro headline -->
       <h1 class="macro" style="font-size:clamp(3.5rem, 8vw, 10rem);line-height:.88;letter-spacing:-.04em;text-transform:uppercase;color:#eaeaea">
-        UNLOCK<br>
+        <span class="vi">MỞ KHOÁ</span><span class="en">UNLOCK</span><br>
         <span class="red">AAPANEL</span><br>
-        <span style="color:rgb(255 255 255 / .06)">AI ASSISTANT</span>
+        <span class="vi" style="color:rgb(255 255 255 / .06)">TRỢ LÝ AI</span>
+        <span class="en" style="color:rgb(255 255 255 / .06)">AI ASSISTANT</span>
       </h1>
 
-      <!-- Subtext block: dense technical spec -->
+      <!-- Subtext -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px">
         <div style="border-left:2px solid #e61919;padding-left:16px">
-          <p style="font-size:13px;line-height:1.6;color:rgb(255 255 255 / .55)">
+          <p class="vi" style="font-size:13px;line-height:1.6;color:rgb(255 255 255 / .55)">
+            Vượt giới hạn quota và rào cản PRO. Dùng API key của chính bạn kết nối trực tiếp đến nhà cung cấp AI, không phụ thuộc máy chủ aaPanel.
+          </p>
+          <p class="en" style="font-size:13px;line-height:1.6;color:rgb(255 255 255 / .55)">
             Bypass quota restrictions and PRO paywalls. Route your own API keys directly to AI providers with zero aaPanel server dependency.
           </p>
         </div>
         <div style="font-size:10px;line-height:1.8;color:rgb(255 255 255 / .25);letter-spacing:.06em;text-transform:uppercase">
-          <span style="color:rgb(255 255 255 / .45)">SUPPORTED</span><br>
+          <span class="vi" style="color:rgb(255 255 255 / .45)">HỖ TRỢ</span>
+          <span class="en" style="color:rgb(255 255 255 / .45)">SUPPORTED</span><br>
           > DeepSeek<br>
           > OpenAI<br>
           > Custom APIs<br>
-          > All PRO models
+          > <span class="vi">Tất cả model PRO</span><span class="en">All PRO models</span>
         </div>
       </div>
 
-      <!-- CTA: industrial button -->
+      <!-- CTAs -->
       <div style="display:flex;align-items:center;gap:16px;padding-top:8px">
         <a href="#install" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#e61919;color:#eaeaea;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .15s" onmouseenter="this.style.background='#cc1616'" onmouseleave="this.style.background='#e61919'">
-          >>> DEPLOY PATCH
+          <span class="vi">>>> CÀI ĐẶT NGAY</span><span class="en">>>> DEPLOY PATCH</span>
         </a>
         <a href="https://github.com/trvanthanhhmaster-spec/aaai-free" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border:1px solid rgb(255 255 255 / .12);color:rgb(255 255 255 / .5);text-decoration:none;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:all .15s" onmouseenter="this.style.borderColor='rgb(255 255 255 / .3)';this.style.color='#eaeaea'" onmouseleave="this.style.borderColor='rgb(255 255 255 / .12)';this.style.color=''">
-          [ VIEW SOURCE ]
+          [ <span class="vi">XEM SOURCE</span><span class="en">VIEW SOURCE</span> ]
         </a>
       </div>
 
@@ -117,42 +143,44 @@
   </div>
 </section>
 
-<!-- ====== SEPARATOR: thick red line ====== -->
 <div style="height:1px;background:rgb(255 255 255 / .06)"></div>
 
-<!-- ====== HOW IT WORKS: bimodal density ====== -->
+<!-- ====== HOW IT WORKS ====== -->
 <section id="how" style="position:relative;padding:100px 24px">
   <div style="max-width:1400px;margin:0 auto">
 
-    <!-- Section header: left-aligned with ASCII framing -->
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:64px">
-      <span class="red" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">/// OPERATION</span>
+      <span class="red vi" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">/// CƠ CHẾ</span>
+      <span class="red en" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">/// OPERATION</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .08)"></span>
     </div>
 
     <h2 class="macro" style="font-size:clamp(2.5rem,5vw,5rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:16px">
-      THREE PATCHES<br>
-      <span style="color:rgb(255 255 255 / .08)">ZERO ENCRYPTED</span><br>
-      <span style="color:rgb(255 255 255 / .08)">FILES TOUCHED</span>
+      <span class="vi">BA VÁ TRÍ<br>KHÔNG ĐỤNG ĐẾN<br></span>
+      <span class="en">THREE PATCHES<br></span>
+      <span style="color:rgb(255 255 255 / .08)"><span class="vi">FILE MÃ HOÁ NÀO</span><span class="en">ZERO ENCRYPTED<br>FILES TOUCHED</span></span>
     </h2>
 
-    <!-- Bimodal: vast negative space then dense grid -->
     <div style="height:80px"></div>
 
-    <!-- Dense grid: 3-column technical spec cards -->
+    <!-- 3-column grid -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgb(255 255 255 / .06);border:1px solid rgb(255 255 255 / .06)">
       <!-- PATCH 01 -->
       <div style="background:#0a0a0a;padding:32px 24px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <span class="red" style="font-size:24px;font-weight:900" class="macro">01</span>
+          <span class="red" style="font-size:24px;font-weight:900;font-family:Inter,sans-serif">01</span>
           <span style="font-size:9px;color:rgb(255 255 255 / .15);letter-spacing:.1em;text-transform:uppercase">CLASS-LEVEL</span>
         </div>
-        <h3 style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Force Shared State</h3>
+        <h3 class="vi" style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Ép Trạng Thái Chung</h3>
+        <h3 class="en" style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Force Shared State</h3>
         <div style="flex:1;height:1px;background:rgb(255 255 255 / .06)"></div>
         <pre style="font-size:11px;line-height:1.7;color:rgb(255 255 255 / .4);overflow-x:auto">
 _shared_state["has_quota"] = True
 _shared_state["is_pro"]    = True</pre>
-        <p style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
+        <p class="vi" style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
+          Ghi đè công tắc chính kiểm soát TẤT CẢ tính năng AI. Chạy một lần khi module được load.
+        </p>
+        <p class="en" style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
           Overrides the master switch that controls ALL AI feature gates. Runs once at module load.
         </p>
       </div>
@@ -160,15 +188,19 @@ _shared_state["is_pro"]    = True</pre>
       <!-- PATCH 02 -->
       <div style="background:#0a0a0a;padding:32px 24px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <span style="font-size:24px;font-weight:900;color:rgb(255 255 255 / .12)" class="macro">02</span>
+          <span style="font-size:24px;font-weight:900;color:rgb(255 255 255 / .12);font-family:Inter,sans-serif">02</span>
           <span style="font-size:9px;color:rgb(255 255 255 / .15);letter-spacing:.1em;text-transform:uppercase">AUTH-WRAP</span>
         </div>
-        <h3 style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Override PRO Auth</h3>
+        <h3 class="vi" style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Đè Xác Thực PRO</h3>
+        <h3 class="en" style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Override PRO Auth</h3>
         <div style="flex:1;height:1px;background:rgb(255 255 255 / .06)"></div>
         <pre style="font-size:11px;line-height:1.7;color:rgb(255 255 255 / .4);overflow-x:auto">
 self.config["is_pro"] = True
 return _orig_pro_auth(self, get)</pre>
-        <p style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
+        <p class="vi" style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
+          Luôn báo cáo license PRO hợp lệ. Fail-open: trả về True ngay cả khi server xác thực không thể kết nối.
+        </p>
+        <p class="en" style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
           Always reports valid PRO license. Fail-open: returns True even when auth server is unreachable.
         </p>
       </div>
@@ -176,17 +208,21 @@ return _orig_pro_auth(self, get)</pre>
       <!-- PATCH 03 -->
       <div style="background:#0a0a0a;padding:32px 24px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <span style="font-size:24px;font-weight:900;color:rgb(255 255 255 / .12)" class="macro">03</span>
+          <span style="font-size:24px;font-weight:900;color:rgb(255 255 255 / .12);font-family:Inter,sans-serif">03</span>
           <span style="font-size:9px;color:rgb(255 255 255 / .15);letter-spacing:.1em;text-transform:uppercase">CONFIG-HOOK</span>
         </div>
-        <h3 style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Rewrite Server Config</h3>
+        <h3 class="vi" style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Ghi Đè Phản Hồi Server</h3>
+        <h3 class="en" style="font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Rewrite Server Config</h3>
         <div style="flex:1;height:1px;background:rgb(255 255 255 / .06)"></div>
         <pre style="font-size:11px;line-height:1.7;color:rgb(255 255 255 / .4);overflow-x:auto">
-# Downgrade PRO models to free
+# <span class="vi">Hạ model PRO xuống free</span><span class="en">Downgrade PRO models to free</span>
 for m in model_list:
     if m.get("auth") == 1:
         m["auth"] = 0</pre>
-        <p style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
+        <p class="vi" style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
+          Chặn phản hồi get_config(). Ép cờ quota/PRO luôn bật, mở khoá các model PRO- only.
+        </p>
+        <p class="en" style="font-size:11px;line-height:1.6;color:rgb(255 255 255 / .3)">
           Intercepts get_config() response. Forces quota/PRO flags on, unlocks PRO-only models.
         </p>
       </div>
@@ -194,43 +230,43 @@ for m in model_list:
   </div>
 </section>
 
-<!-- ====== SEPARATOR ====== -->
 <div style="height:1px;background:rgb(255 255 255 / .06)"></div>
 
-<!-- ====== ARCHITECTURE: before/after ====== -->
+<!-- ====== ARCHITECTURE ====== -->
 <section style="position:relative;padding:100px 24px">
   <div style="max-width:1400px;margin:0 auto">
 
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:64px">
-      <span style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgb(255 255 255 / .2)">/// ARCHITECTURE</span>
+      <span class="vi" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgb(255 255 255 / .2)">/// KIẾN TRÚC</span>
+      <span class="en" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgb(255 255 255 / .2)">/// ARCHITECTURE</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .08)"></span>
     </div>
 
-    <!-- Massive headline -->
     <h2 class="macro" style="font-size:clamp(2.5rem,5vw,5rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:64px">
-      CUT OUT<br>
-      <span class="red">THE MIDDLEMAN</span>
+      <span class="vi">LOẠI BỎ<br></span><span class="en">CUT OUT<br></span>
+      <span class="red"><span class="vi">TRUNG GIAN</span><span class="en">THE MIDDLEMAN</span></span>
     </h2>
 
-    <!-- Before/After: thick bordered compartments -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgb(255 255 255 / .06);border:1px solid rgb(255 255 255 / .06)">
       <!-- BEFORE -->
       <div style="background:#0a0a0a;padding:48px 32px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:32px">
           <span style="width:8px;height:8px;background:#e61919"></span>
-          <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgb(255 255 255 / .3)">BEFORE // DEFAULT ROUTE</span>
+          <span class="vi" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgb(255 255 255 / .3)">TRƯỚC // ĐỊNH TUYẾN MẶC ĐỊNH</span>
+          <span class="en" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgb(255 255 255 / .3)">BEFORE // DEFAULT ROUTE</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;padding:20px;border:1px solid rgb(255 255 255 / .06)">
           <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgb(255 255 255 / .3)">
-            <span>YOUR PANEL</span>
+            <span class="vi">PANEL CỦA BẠN</span><span class="en">YOUR PANEL</span>
             <span style="color:rgb(255 255 255 / .1)">--- REQUEST ---</span>
             <span>AAPANEL.COM</span>
             <span style="color:rgb(255 255 255 / .1)">--- PROXY ---</span>
-            <span>AI PROVIDER</span>
+            <span class="vi">NHÀ CUNG CẤP AI</span><span class="en">AI PROVIDER</span>
           </div>
         </div>
         <div style="margin-top:16px;padding:12px 16px;border:1px solid #e61919;background:rgb(230 25 25 / .05)">
-          <span style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#e61919">FAILURE MODE: Server down or quota=0 = BLOCKED</span>
+          <span class="vi" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#e61919">LỖI: Server down hoặc quota=0 = CHẶN</span>
+          <span class="en" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#e61919">FAILURE MODE: Server down or quota=0 = BLOCKED</span>
         </div>
       </div>
 
@@ -238,52 +274,53 @@ for m in model_list:
       <div style="background:#0a0a0a;padding:48px 32px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:32px">
           <span style="width:8px;height:8px;background:#4af626"></span>
-          <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgb(255 255 255 / .3)">AFTER // PATCHED ROUTE</span>
+          <span class="vi" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgb(255 255 255 / .3)">SAU // ĐÃ VÁ</span>
+          <span class="en" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgb(255 255 255 / .3)">AFTER // PATCHED ROUTE</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;padding:20px;border:1px solid rgb(255 255 255 / .15)">
           <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgb(255 255 255 / .7)">
-            <span>YOUR PANEL</span>
-            <span style="color:#4af626">>>> DIRECT >>></span>
-            <span>AI PROVIDER</span>
+            <span class="vi">PANEL CỦA BẠN</span><span class="en">YOUR PANEL</span>
+            <span style="color:#4af626">>>> <span class="vi">TRỰC TIẾP</span><span class="en">DIRECT</span> >>></span>
+            <span class="vi">NHÀ CUNG CẤP AI</span><span class="en">AI PROVIDER</span>
           </div>
         </div>
         <div style="margin-top:16px;padding:12px 16px;border:1px solid #4af626;background:rgb(74 246 38 / .03)">
-          <span style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#4af626">OPERATIONAL: Your keys, no middleman</span>
+          <span class="vi" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#4af626">HOẠT ĐỘNG: Key của bạn, không trung gian</span>
+          <span class="en" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#4af626">OPERATIONAL: Your keys, no middleman</span>
         </div>
       </div>
     </div>
 
-    <!-- Technical note -->
     <div style="margin-top:24px;display:flex;align-items:center;gap:12px;font-size:9px;color:rgb(255 255 255 / .12);letter-spacing:.08em;text-transform:uppercase">
       <span>+</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .04)"></span>
-      <span>ZERO LATENCY OVERHEAD // NO PROXY // NO QUOTA CHECK</span>
+      <span class="vi">KHÔNG ĐỘ TRỄ // KHÔNG PROXY // KHÔNG KIỂM TRA QUOTA</span>
+      <span class="en">ZERO LATENCY OVERHEAD // NO PROXY // NO QUOTA CHECK</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .04)"></span>
       <span>+</span>
     </div>
   </div>
 </section>
 
-<!-- ====== SEPARATOR ====== -->
 <div style="height:1px;background:rgb(255 255 255 / .06)"></div>
 
-<!-- ====== DEPLOY: installation ====== -->
+<!-- ====== INSTALL ====== -->
 <section id="install" style="position:relative;padding:100px 24px">
   <div style="max-width:1400px;margin:0 auto">
 
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:64px">
-      <span class="red" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">/// DEPLOY</span>
+      <span class="red vi" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">/// CÀI ĐẶT</span>
+      <span class="red en" style="font-size:10px;letter-spacing:.15em;text-transform:uppercase">/// DEPLOY</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .08)"></span>
     </div>
 
     <h2 class="macro" style="font-size:clamp(2.5rem,5vw,5rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:64px">
-      ONE COMMAND<br>
-      <span style="color:rgb(255 255 255 / .08)">TO INSTALL</span>
+      <span class="vi">MỘT DÒNG LỆNH<br></span><span class="en">ONE COMMAND<br></span>
+      <span style="color:rgb(255 255 255 / .08)"><span class="vi">ĐỂ CÀI ĐẶT</span><span class="en">TO INSTALL</span></span>
     </h2>
 
     <!-- Terminal block -->
     <div style="border:1px solid rgb(255 255 255 / .1);background:rgb(255 255 255 / .015);padding:0;margin-bottom:40px">
-      <!-- Title bar -->
       <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgb(255 255 255 / .06);background:rgb(255 255 255 / .02)">
         <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgb(255 255 255 / .2)">[ TERMINAL // aaPanel VPS ]</span>
         <span class="terminal-green" style="font-size:9px">ONLINE</span>
@@ -293,59 +330,64 @@ for m in model_list:
 <span style="color:rgb(255 255 255 / .2)">$</span> cd aaai-free
 <span style="color:rgb(255 255 255 / .2)">$</span> sudo bash install.sh
 
-<span style="color:#e61919">[aaai-free]</span> <span style="color:#eaeaea">aaAI-Free installer</span>
-<span style="color:#e61919">[aaai-free]</span> Installed: aaai_free.py
-<span style="color:#e61919">[aaai-free]</span> Patched: agent.py
-<span style="color:#e61919">[aaai-free]</span> Done. Restart aaPanel to apply.
+<span style="color:#e61919">[aaai-free]</span> <span class="vi" style="color:#eaeaea">Trình cài đặt aaAI-Free</span><span class="en" style="color:#eaeaea">aaAI-Free installer</span>
+<span style="color:#e61919">[aaai-free]</span> <span class="vi">Đã cài: aaai_free.py</span><span class="en">Installed: aaai_free.py</span>
+<span style="color:#e61919">[aaai-free]</span> <span class="vi">Đã vá: agent.py</span><span class="en">Patched: agent.py</span>
+<span style="color:#e61919">[aaai-free]</span> <span class="vi">Xong. Khởi động lại aaPanel để áp dụng.</span><span class="en">Done. Restart aaPanel to apply.</span>
 
 <span style="color:rgb(255 255 255 / .2)">$</span> /etc/init.d/bt restart
 <span class="terminal-green">OK</span></pre>
     </div>
 
-    <!-- Steps: 2x2 grid, no rounded corners -->
+    <!-- Steps -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgb(255 255 255 / .06);border:1px solid rgb(255 255 255 / .06)">
       <div style="background:#0a0a0a;padding:24px;display:flex;align-items:flex-start;gap:16px">
-        <span class="red" style="font-size:28px;font-weight:900;line-height:1" class="macro">1</span>
+        <span class="red" style="font-size:28px;font-weight:900;line-height:1;font-family:Inter,sans-serif">1</span>
         <div>
-          <h4 style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Clone Repository</h4>
-          <p style="font-size:10px;color:rgb(255 255 255 / .25)">git clone from GitHub to your aaPanel VPS</p>
+          <h4 class="vi" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Clone Repository</h4>
+          <h4 class="en" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Clone Repository</h4>
+          <p class="vi" style="font-size:10px;color:rgb(255 255 255 / .25)">git clone từ GitHub về VPS aaPanel của bạn</p>
+          <p class="en" style="font-size:10px;color:rgb(255 255 255 / .25)">git clone from GitHub to your aaPanel VPS</p>
         </div>
       </div>
       <div style="background:#0a0a0a;padding:24px;display:flex;align-items:flex-start;gap:16px">
-        <span style="font-size:28px;font-weight:900;line-height:1;color:rgb(255 255 255 / .12)" class="macro">2</span>
+        <span style="font-size:28px;font-weight:900;line-height:1;color:rgb(255 255 255 / .12);font-family:Inter,sans-serif">2</span>
         <div>
-          <h4 style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Run Installer</h4>
-          <p style="font-size:10px;color:rgb(255 255 255 / .25)">sudo bash install.sh injects the patch</p>
+          <h4 class="vi" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Chạy Trình Cài</h4>
+          <h4 class="en" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Run Installer</h4>
+          <p class="vi" style="font-size:10px;color:rgb(255 255 255 / .25)">sudo bash install.sh sẽ tiêm bản vá</p>
+          <p class="en" style="font-size:10px;color:rgb(255 255 255 / .25)">sudo bash install.sh injects the patch</p>
         </div>
       </div>
       <div style="background:#0a0a0a;padding:24px;display:flex;align-items:flex-start;gap:16px">
-        <span style="font-size:28px;font-weight:900;line-height:1;color:rgb(255 255 255 / .12)" class="macro">3</span>
+        <span style="font-size:28px;font-weight:900;line-height:1;color:rgb(255 255 255 / .12);font-family:Inter,sans-serif">3</span>
         <div>
-          <h4 style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Restart aaPanel</h4>
-          <p style="font-size:10px;color:rgb(255 255 255 / .25)">/etc/init.d/bt restart applies the patch</p>
+          <h4 class="vi" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Khởi Động Lại aaPanel</h4>
+          <h4 class="en" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Restart aaPanel</h4>
+          <p style="font-size:10px;color:rgb(255 255 255 / .25)">/etc/init.d/bt restart</p>
         </div>
       </div>
       <div style="background:#0a0a0a;padding:24px;display:flex;align-items:flex-start;gap:16px">
-        <span class="terminal-green" style="font-size:28px;font-weight:900;line-height:1" class="macro">4</span>
+        <span class="terminal-green" style="font-size:28px;font-weight:900;line-height:1;font-family:Inter,sans-serif">4</span>
         <div>
-          <h4 style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Use Your Own Keys</h4>
-          <p style="font-size:10px;color:rgb(255 255 255 / .25)">Add custom API accounts in AI settings</p>
+          <h4 class="vi" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Dùng Key Của Bạn</h4>
+          <h4 class="en" style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Use Your Own Keys</h4>
+          <p class="vi" style="font-size:10px;color:rgb(255 255 255 / .25)">Thêm tài khoản API tùy chỉnh trong cài đặt AI</p>
+          <p class="en" style="font-size:10px;color:rgb(255 255 255 / .25)">Add custom API accounts in AI settings</p>
         </div>
       </div>
     </div>
 
-    <!-- Uninstall -->
     <div style="margin-top:24px;display:flex;align-items:center;gap:12px;font-size:9px;color:rgb(255 255 255 / .12);letter-spacing:.08em;text-transform:uppercase">
-      <span>REMOVE:</span>
+      <span class="vi">GỠ:</span><span class="en">REMOVE:</span>
       <code style="color:rgb(255 255 255 / .25)">sudo bash install.sh --uninstall</code>
     </div>
   </div>
 </section>
 
-<!-- ====== SEPARATOR ====== -->
 <div style="height:1px;background:rgb(255 255 255 / .06)"></div>
 
-<!-- ====== FOOTER: industrial telemetry ====== -->
+<!-- ====== FOOTER ====== -->
 <footer style="padding:40px 24px">
   <div style="max-width:1400px;margin:0 auto">
 
@@ -359,16 +401,16 @@ for m in model_list:
 
       <div style="display:flex;align-items:center;gap:24px;font-size:10px;letter-spacing:.08em;text-transform:uppercase">
         <a href="https://github.com/trvanthanhhmaster-spec/aaai-free" style="color:rgb(255 255 255 / .25);text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">[ SOURCE ]</a>
-        <a href="https://github.com/trvanthanhhmaster-spec" style="color:rgb(255 255 255 / .25);text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">[ AUTHOR ]</a>
+        <a href="https://github.com/trvanthanhhmaster-spec" style="color:rgb(255 255 255 / .25);text-decoration:none;transition:color .15s" onmouseenter="this.style.color='#eaeaea'" onmouseleave="this.style.color=''">[ <span class="vi">TÁC GIẢ</span><span class="en">AUTHOR</span> ]</a>
         <span style="color:rgb(255 255 255 / .06)">+</span>
       </div>
     </div>
 
-    <!-- Bottom strip -->
     <div style="margin-top:24px;display:flex;align-items:center;gap:12px;font-size:8px;color:rgb(255 255 255 / .06);letter-spacing:.1em;text-transform:uppercase">
       <span>+</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .03)"></span>
-      <span>DESIGNED WITH INDUSTRIAL BRUTALISM // TACTICAL TELEMETRY MODE // ZERO EM-DASHES // ZERO BORDER-RADIUS</span>
+      <span class="vi">THIẾT KẾ THEO INDUSTRIAL BRUTALISM // CHẾ ĐỘ TACTICAL TELEMETRY // KHÔNG EM-DASH // KHÔNG BO GÓC</span>
+      <span class="en">DESIGNED WITH INDUSTRIAL BRUTALISM // TACTICAL TELEMETRY MODE // ZERO EM-DASHES // ZERO BORDER-RADIUS</span>
       <span style="flex:1;height:1px;background:rgb(255 255 255 / .03)"></span>
       <span>+</span>
     </div>
